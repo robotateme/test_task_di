@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Repositories\Contracts\Products\ProductsRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductsRepository implements ProductsRepositoryInterface
+class SqlRepository implements ProductsRepositoryInterface
 {
 
     /**

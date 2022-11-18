@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Repositories\Products\ProductsApiRepository;
+use App\Repositories\Products\RestApiRepository;
 use App\Services\ProductsService;
 use Tests\TestCase;
 use function PHPUnit\Framework\assertInstanceOf;
@@ -28,7 +28,7 @@ class ProductServiceTest extends TestCase
     {
 
         $this->service->getOneById(1000);
-        assertInstanceOf(ProductsApiRepository::class, $this->service->getProductsRepository());
+        assertInstanceOf(RestApiRepository::class, $this->service->getProductsRepository());
     }
 
     /**
@@ -37,7 +37,7 @@ class ProductServiceTest extends TestCase
     public function test_change_repository_to_database_by_id(): void
     {
         $this->service->getOneById(100);
-        assertInstanceOf(ProductsApiRepository::class, $this->service->getProductsRepository());
+        assertInstanceOf(RestApiRepository::class, $this->service->getProductsRepository());
     }
 
 }

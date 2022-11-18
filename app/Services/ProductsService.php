@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\Products\ProductsRepositoryInterface;
-use App\Repositories\Products\ProductsApiRepository;
-use App\Repositories\Products\ProductsRepository;
+use App\Repositories\Products\RestApiRepository;
+use App\Repositories\Products\SqlRepository;
 use App\Services\Contracts\ServiceInterface;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,10 +33,10 @@ class ProductsService implements ServiceInterface
      */
     protected function changeRepository(int $productId): void
     {
-        $this->productsRepository = new ProductsRepository();
+        $this->productsRepository = new SqlRepository();
 
         if ($productId >= 1000) {
-            $this->productsRepository = new ProductsApiRepository();
+            $this->productsRepository = new RestApiRepository();
         }
     }
 
