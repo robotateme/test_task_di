@@ -19,9 +19,9 @@ class ProductsService implements ServiceInterface
 
     /**
      * @param int $productId
-     * @return Model
+     * @return Model|null
      */
-    public function getOneById(int $productId): Model
+    public function getOneById(int $productId): ?Model
     {
         $this->changeRepository($productId);
         return $this->productsRepository->getOneById($productId);
