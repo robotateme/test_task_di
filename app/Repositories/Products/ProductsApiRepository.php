@@ -17,9 +17,9 @@ class ProductsApiRepository implements ProductsRepositoryInterface
 
     /**
      * @param int $id
-     * @return Model
+     * @return Model|null
      */
-    public function getOneById(int $id): Model
+    public function getOneById(int $id): ?Model
     {
         $method = 'products/%d';
         $responseData = \Http::get(\URL::format($this->host, sprintf($method, $id)))->json();

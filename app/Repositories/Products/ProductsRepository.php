@@ -11,9 +11,9 @@ class ProductsRepository implements ProductsRepositoryInterface
 
     /**
      * @param int $id
-     * @return Model
+     * @return Model|null
      */
-    public function getOneById(int $id): Model
+    public function getOneById(int $id): ?Model
     {
         return Product::find($id);
     }

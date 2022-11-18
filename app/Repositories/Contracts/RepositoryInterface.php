@@ -9,8 +9,8 @@ interface RepositoryInterface
 
     /**
      * @param int $id
-     * @return Model
+     * @return ?Model
      */
-    public function getOneById(int $id): Model;
+    public function getOneById(int $id): ?Model;
 
 }
