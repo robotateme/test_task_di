@@ -33,9 +33,9 @@ class ProductsService implements ServiceInterface
      */
     protected function changeRepository(int $productId): void
     {
-        $this->productsRepository = new SqlRepository();
-
-        if ($productId >= 1000) {
+        if ($productId < 1000) {
+            $this->productsRepository = new SqlRepository();
+        } else {
             $this->productsRepository = new RestApiRepository();
         }
     }
