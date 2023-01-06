@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductsService implements ServiceInterface
 {
+    private int $threshold = 1000;
+
     /**
      * @param ProductsRepositoryInterface $productsRepository
      */
@@ -33,7 +35,7 @@ class ProductsService implements ServiceInterface
      */
     protected function changeRepository(int $productId): void
     {
-        if ($productId < 1000) {
+        if ($productId < $this->threshold) {
             $this->productsRepository = new SqlRepository();
         } else {
             $this->productsRepository = new RestApiRepository();
@@ -46,5 +48,15 @@ class ProductsService implements ServiceInterface
     public function getProductsRepository(): ProductsRepositoryInterface
     {
         return $this->productsRepository;
+    }
+
+    /**
+     * @param int $threshold
+     * @return ProductsService
+     */
+    public function setThreshold(int $threshold): ProductsService
+    {
+        $this->threshold = $threshold;
+        return $this;
     }
 }
